@@ -12,5 +12,6 @@ libhivex-dev libguestfs-dev libedit-dev
 
 RUN wget http://nixos.org/releases/patchelf/patchelf-0.8/patchelf-0.8.tar.gz && tar xf patchelf-0.8.tar.gz && patchelf-0.8/configure && make install && rm -rf patchelf-0.8 && rm -f patchelf-0.8.tar.gz
 RUN apt-get update
+RUN apt-get upgrade
 RUN apt-get build-dep -y qemu
 RUN apt-get install -y snapcraft
