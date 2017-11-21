@@ -3,8 +3,8 @@ FROM ubuntu:16.04
 MAINTAINER bidnichenko <bidnichenko.alex@apriorit.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-#for debug
-RUN cat /etc/apt/sources.list
+#uncomment all src repositories
+RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && sudo sed -i -- 's/# deb-src/deb-src/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y bison++ unzip libssl-dev libprocps4-dev libxalan-c-dev libxerces-c-dev libnl-3-dev \
 libcrypto++-dev libcrypto++9v5 libpcre++-dev uuid-dev libsnappy-dev build-essential libboost-all-dev cmake maven libicu-dev \
