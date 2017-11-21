@@ -4,7 +4,7 @@ MAINTAINER bidnichenko <bidnichenko.alex@apriorit.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 #uncomment all src repositories
-RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && sudo sed -i -- 's/# deb-src/deb-src/g' /etc/apt/sources.list
+RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && sed -i -- 's/# deb-src/deb-src/g' /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y bison++ unzip libssl-dev libprocps4-dev libxalan-c-dev libxerces-c-dev libnl-3-dev \
 libcrypto++-dev libcrypto++9v5 libpcre++-dev uuid-dev libsnappy-dev build-essential libboost-all-dev cmake maven libicu-dev \
