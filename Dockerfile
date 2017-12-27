@@ -18,6 +18,6 @@ RUN apt-get build-dep -y qemu-kvm
 RUN apt-get install -y snapcraft
 
 # for sonar
-RUN apt-get install cppcheck gcovr 
+RUN apt-get install -y cppcheck gcovr 
 RUN mkdir -p /tmp/sonar && wget -P /tmp/sonar/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip && unzip -o /tmp/sonar/sonar-scanner-cli-3.0.3.778-linux.zip -d /tmp/sonar/ && rm /tmp/sonar/sonar-scanner-cli-3.0.3.778-linux.zip 
 RUN PATH=$PATH:/tmp/sonar/sonar-scanner-3.0.3.778-linux/bin
