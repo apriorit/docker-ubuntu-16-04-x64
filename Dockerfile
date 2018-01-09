@@ -19,5 +19,5 @@ RUN apt-get install -y snapcraft
 
 # for sonar
 RUN apt-get install -y cppcheck gcovr
-RUN mkdir -p //tmp/sonar && wget -P //tmp/sonar/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip && unzip -o //tmp/sonar/sonar-scanner-cli-3.0.3.778-linux.zip -d //tmp/sonar/ && rm //tmp/sonar/sonar-scanner-cli-3.0.3.778-linux.zip
-RUN PATH=$PATH://tmp/sonar/sonar-scanner-3.0.3.778-linux/bin
+RUN mkdir -p ~/sonar && wget -P ~/sonar/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip && unzip -o ~/sonar/sonar-scanner-cli-3.0.3.778-linux.zip -d ~/sonar/ && rm ~/sonar/sonar-scanner-cli-3.0.3.778-linux.zip
+RUN PATH=$PATH:~/sonar/sonar-scanner-3.0.3.778-linux/bin
