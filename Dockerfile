@@ -17,6 +17,12 @@ RUN apt-get upgrade -y
 RUN apt-get build-dep -y qemu-kvm
 RUN apt-get install -y snapcraft
 RUN apt-get install -y libelf-dev
+RUN apt-get install -y git autoconf
+
+#gRPC
+RUN git clone --recursive --branch release-0_14_1 --single-branch https://github.com/grpc/grpc
+RUN cd grpc && make HAS_SYSTEM_OPENSSL_NPN=false HAS_SYSTEM_OPENSSL_ALPN=false && make install prefix=/opt/grpc \
+&& cd third_party/protobuf/ && make install prefix=/opt/grpc
 
 # for sonar
 RUN apt-get install -y cppcheck gcovr
