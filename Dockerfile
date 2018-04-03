@@ -24,6 +24,9 @@ RUN git clone --recursive --branch release-0_14_1 --single-branch https://github
 RUN cd grpc && make HAS_SYSTEM_OPENSSL_NPN=false HAS_SYSTEM_OPENSSL_ALPN=false && make install prefix=/opt/grpc \
 && cd third_party/protobuf/ && make install prefix=/opt/grpc
 
+#add 4.10-30 kernel headers
+RUN apt-get install -y linux-headers-4.10.0-30-generic && ls /lib/modules
+
 # for sonar
 RUN apt-get install -y cppcheck gcovr
 RUN mkdir -p ~/sonar && wget -P ~/sonar/ https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.0.3.778-linux.zip && unzip -o ~/sonar/sonar-scanner-cli-3.0.3.778-linux.zip -d ~/sonar/ && rm ~/sonar/sonar-scanner-cli-3.0.3.778-linux.zip
