@@ -24,8 +24,8 @@ RUN git clone --recursive --branch release-0_14_1 --single-branch https://github
 RUN cd grpc && make HAS_SYSTEM_OPENSSL_NPN=false HAS_SYSTEM_OPENSSL_ALPN=false && make install prefix=/opt/grpc \
 && cd third_party/protobuf/ && make install prefix=/opt/grpc
 
-#add 4.10-30 kernel headers
-RUN apt-get install -y linux-headers-4.10.0-30-generic && ls /lib/modules
+#add linux kernel headers
+RUN apt-get install -y linux-headers-$(uname -r)
 
 # for sonar
 RUN apt-get install -y cppcheck gcovr
