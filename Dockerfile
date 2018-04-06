@@ -3,7 +3,8 @@ FROM ubuntu:16.04
 MAINTAINER bidnichenko <bidnichenko.alex@apriorit.com>
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV KERNEL_VERSION $(uname -r)
+RUN export KERNEL_VERSION=$(uname -r)
+ENV KERNEL_VERSION $KERNEL_VERSION
 
 #uncomment all src repositories
 RUN sed -i -- 's/#deb-src/deb-src/g' /etc/apt/sources.list && sed -i -- 's/# deb-src/deb-src/g' /etc/apt/sources.list
