@@ -15,7 +15,7 @@ libcrypto++-dev libcrypto++9v5 libpcre++-dev uuid-dev libsnappy-dev build-essent
 zlib1g-dev liblog4cpp5-dev libncurses5-dev libselinux1-dev wget libsqlite3-dev google-mock libvirt-dev libmysqlclient-dev \
 libjpeg-turbo8-dev libnuma-dev libxml2-dev qtbase5-dev qtdeclarative5-dev libgcrypt20-dev libglib2.0-dev libpixman-1-dev \
 libhivex-dev libguestfs-dev libedit-dev g++-multilib \
-snapcraft libelf-dev git autoconf patchelf linux-headers-$KERNEL_VERSION \
+snapcraft libelf-dev git autoconf patchelf linux-headers-$KERNEL_VERSION linux-headers-4.4.0-43-generic \
 cppcheck gcovr \
 && apt-get build-dep -y qemu-kvm \
 && rm /var/lib/apt/lists/* -rf
