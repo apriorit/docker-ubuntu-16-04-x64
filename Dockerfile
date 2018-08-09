@@ -17,6 +17,7 @@ libjpeg-turbo8-dev libnuma-dev libxml2-dev qtbase5-dev qtdeclarative5-dev libgcr
 libhivex-dev libguestfs-dev libedit-dev g++-multilib \
 snapcraft libelf-dev git autoconf patchelf linux-headers-$KERNEL_VERSION linux-headers-4.4.0-43-generic \
 cppcheck gcovr \
+doxygen graphviz \
 && apt-get build-dep -y qemu-kvm \
 && rm /var/lib/apt/lists/* -rf
 
