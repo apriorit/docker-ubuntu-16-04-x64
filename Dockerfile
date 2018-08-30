@@ -19,7 +19,7 @@ libhivex-dev libguestfs-dev libedit-dev g++-multilib \
 snapcraft libelf-dev git autoconf patchelf linux-headers-$KERNEL_VERSION linux-headers-4.4.0-43-generic \
 cppcheck gcovr \
 doxygen graphviz \
-mysql \
+mysql-client \
 && apt-get build-dep -y qemu-kvm \
 && rm /var/lib/apt/lists/* -rf
 
