@@ -5,8 +5,9 @@ MAINTAINER Sergii Kusii <kusii.sergii@apriorit.com>
 #old kernels from http://kernel.ubuntu.com/~kernel-ppa/mainline
 
 RUN apt-get update && \
-apt install -y linux-image-4.15.0-32-generic linux-image-4.10.0-30-generic linux-image-4.8.0-52-generic  && \
-apt install -y linux-headers-4.4.0-103-generic linux-headers-4.13.0-39-generic  && \
+apt install -y linux-image-4.15.0-32-generic linux-image-4.10.0-30-generic linux-image-4.8.0-52-generic  \
+               linux-headers-4.8.0-52-generic linux-headers-4.10.0-30-generic linux-headers-4.15.0-32-generic \
+               linux-headers-4.4.0-103-generic linux-headers-4.13.0-39-generic  && \
 mkdir /tmp/rs_dep && cd /tmp/rs_dep && \
 apt install -y wget &&  \
 wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v3.7.1-raring/linux-headers-3.7.1-030701_3.7.1-030701.201212171620_all.deb && \
@@ -21,4 +22,6 @@ wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v3.19-vivid/linux-headers-3.1
 wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v3.19-vivid/linux-headers-3.19.0-031900-generic_3.19.0-031900.201504091832_amd64.deb && \
 ls -1 | grep all.deb | xargs dpkg -i && ls -1 | grep amd64.deb | xargs dpkg -i && \
 rm -rf /tmp/rs_dep && \
+apt install -y build-essential cmake gcc-4.9 && \
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 50 && \
 rm /var/lib/apt/lists/* -rf 
