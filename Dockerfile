@@ -13,3 +13,17 @@ qtdeclarative5-dev patchelf libblkid-dev giblib-dev libimlib2-dev libglib2.0-dev
 
 RUN apt-get install -y libgtest-dev
 RUN cd /usr/src/gtest/ && cmake . && make && cp *.a /usr/lib
+
+#Install MS ODBC Driver and Libraries
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update 
+RUN ACCEPT_EULA=Y apt-get install msodbcsql
+
+# optional: for bcp and sqlcmd
+RUN ACCEPT_EULA=Y apt-get install mssql-tools
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN source ~/.bashrc
+# optional: for unixODBC development headers
+RUN apt-get install unixodbc-dev
