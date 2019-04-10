@@ -22,8 +22,5 @@ RUN ACCEPT_EULA=Y apt-get install -y msodbcsql
 
 # optional: for bcp and sqlcmd
 RUN ACCEPT_EULA=Y apt-get install -y mssql-tools
-RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
-RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
-RUN source ~/.bashrc
 # optional: for unixODBC development headers
 RUN apt-get -y install unixodbc-dev
