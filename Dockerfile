@@ -29,4 +29,4 @@ RUN apt-get -y install unixodbc-dev
 RUN apt-get -y install odbc-postgresql && sed -i 's/psqlodbcw.so/\/usr\/lib\/x86_64-linux-gnu\/odbc\/psqlodbcw.so/g' /etc/odbcinst.ini
 
 # For dbtest
-RUN apt-get -y install unzip && apt-get -y install -y postgresql-client
+RUN apt-get -y install unzip && apt-get -y install postgresql-client
