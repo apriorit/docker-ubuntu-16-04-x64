@@ -24,3 +24,9 @@ RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17
 RUN ACCEPT_EULA=Y apt-get install -y mssql-tools
 # optional: for unixODBC development headers
 RUN apt-get -y install unixodbc-dev
+
+#Install postgres odbc and replace relative path by full path to odbc driver (fix not found odbc driver error)
+RUN apt-get -y install odbc-postgresql && sed -i 's/psqlodbcw.so/\/usr\/lib\/x86_64-linux-gnu\/odbc\/psqlodbcw.so/g' /etc/odbcinst.ini
+
+# For dbtest
+RUN apt-get -y install unzip && apt-get -y install -y postgresql-client
