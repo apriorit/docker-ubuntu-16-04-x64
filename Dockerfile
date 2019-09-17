@@ -38,3 +38,6 @@ RUN apt-get -y install build-essential autoconf libtool pkg-config libgflags-dev
 # grpc
 RUN cd /tmp && git clone -b "v1.13.x" https://github.com/grpc/grpc && cd grpc && git submodule update --init && make && make install && cd third_party/protobuf && make install
 
+#golang
+RUN apt-get -y install golang
+
