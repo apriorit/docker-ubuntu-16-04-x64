@@ -35,15 +35,15 @@ RUN cd /tmp && git clone -b "poco-1.9.0" https://github.com/pocoproject/poco.git
 # grpc depends
 RUN apt-get -y install build-essential autoconf libtool pkg-config libgflags-dev libgtest-dev clang libc++-dev patchelf
 
+# grpc
+RUN cd /tmp && git clone -b "v1.13.x" https://github.com/grpc/grpc && cd grpc && git submodule update --init && make && make install && cd third_party/protobuf && make install
+
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgpr.so.6.0.0
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgrpc_cronet.so.6.0.0
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgrpc++_reflection.so.1.13.1
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgrpc++.so.1.13.1
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgrpc.so.6.0.0
 RUN patchelf --set-rpath '\$ORIGIN' /usr/local/lib/libgrpc++_unsecure.so.1.13.1
-
-# grpc
-RUN cd /tmp && git clone -b "v1.13.x" https://github.com/grpc/grpc && cd grpc && git submodule update --init && make && make install && cd third_party/protobuf && make install
 
 #golang
 RUN cd /tmp && mkdir -p golang && cd golang && wget https://dl.google.com/go/go1.13.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.linux-amd64.tar.gz && cd /tmp && rm -rf ./golang
